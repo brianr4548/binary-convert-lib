@@ -66,14 +66,14 @@ void NumConvert::userInput() {
 
 		if (input->size() < 4 || input->size() > 14) {
 			system("cls");
-			cout << "ERROR: incorrect input! Number are digits are not within the scope!" <<  endl;
+			cout << "ERROR: Enter a binary number between 4 and 12 bits!" <<  endl;
 			continue;
 		}
 
 		for (auto num : *input) {
 			if (num != '1' && num != '0') {
 				system("cls");
-				cout << "ERROR: number contains digits either less than 0 or greater than one!" << endl;
+				cout << "ERROR: Enter only binary digit (0 or 1)!" << endl;
 				*switcher = false;
 				break;
 			}
@@ -89,10 +89,9 @@ void NumConvert::userInput() {
 		break;
 
 	}
-
+	system("cls");
 	input->insert(0, "0");
 	this->binaryNum = *input;
-	cout << this->binaryNum;
 
 	delete input;
 	delete switcher;
@@ -335,7 +334,7 @@ string NumConvert::getTwos() {
 
 int main() {
 	NumConvert *test = new NumConvert;
-	/*test->userInput();*/
+	test->userInput();
 	test->toDecimal();
 	test->toOctal();
 	test->toHexadecimal();
@@ -343,13 +342,13 @@ int main() {
 	test->negativeOnes();
 	test->negativeTwos();
 
-	cout << "Binary: " << test->getBinary() << endl;
-	cout << "Decimal: " << test->getDecimal() << endl;
-	cout << "Octal: " << test->getOctal() << endl;
-	cout << "Hexadecimal: " << test->getHexadecimal() << endl;
-	cout << "Signed Magnitude: " << test->getSM() << endl;
-	cout << "Ones complement: " << test->getOnes() << endl;
-	cout << "Twos complement: " << test->getTwos() << endl;
+	cout << "The bits entered: " << test->getBinary() << endl;
+	cout << "The Decimal equivalent: " << test->getDecimal() << endl;
+	cout << "The Octal equivalent: " << test->getOctal() << endl;
+	cout << "The Hexadecimal equivalent: " << test->getHexadecimal() << endl;
+	cout << "The negative no " << "(-" << test->getDecimal() << ") " << "using Signed Magnitude " << test->getSM() << endl;
+	cout << "The negative no " << "(-" << test->getDecimal() << ") " << "using 1's Complement " << test->getOnes() << endl;
+	cout << "The negative no " << "(-" << test->getDecimal() << ") " << "using 2's Complement " << test->getTwos() << endl;
 
 	delete test;
 }
